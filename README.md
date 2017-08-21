@@ -30,4 +30,5 @@
 
 1.纯图片 | 2.纯文本 | 3.图文混排
 ------------|-------------|----------------
+
 ![actionSheet2.gif](http://upload-images.jianshu.io/upload_images/1368996-9a123a5dc4946dd1.gif?imageMogr2/auto-orient/strip)
