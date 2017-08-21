@@ -34,4 +34,4 @@
 ![actionSheet2.gif](http://upload-images.jianshu.io/upload_images/1368996-9a123a5dc4946dd1.gif?imageMogr2/auto-orient/strip)
 
 
-### 如果您觉得还不错请您留下您的Star
+### 如果您觉得还不错请您留下您的Star，感谢您的鼓励
