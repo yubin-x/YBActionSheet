@@ -311,6 +311,12 @@
 #pragma mark - set view
 - (void)setViewContent
 {
+    /// 适配iPhone X
+    UIEdgeInsets safeAreaInsets = UIEdgeInsetsZero;
+    if (@available(iOS 11.0, *)) {
+        safeAreaInsets = [UIApplication sharedApplication].keyWindow.safeAreaInsets;
+    }
+
     self.customBgView.frame = CGRectMake(self.edgeInsets.left, 0, SCREEN_WIDTH - self.edgeInsets.left - self.edgeInsets.right, 0);
     
     CGFloat titleHeight = 0.0,messageHeight = 0.0;
@@ -350,7 +356,7 @@
     self.tableView.frame = CGRectMake(0, self.titleAndMessageView.maxY, self.customBgView.w, 0);
     
     // 如果设置的actionsheet的高度小于0.1倍的屏幕高度，默认使用0.8倍的屏幕高度。如果大于屏幕的高度则使用屏幕的高度
-    self.maxHeight = SCREEN_HEIGHT *(self.maxHeightRatio > 0.4 ? (self.maxHeightRatio > 1.0 ? 1.0 : self.maxHeightRatio) : 0.8);
+    self.maxHeight = SCREEN_HEIGHT *(self.maxHeightRatio > 0.4 ? (self.maxHeightRatio > 1.0 ? 1.0 : self.maxHeightRatio) : 0.8) - safeAreaInsets.top - safeAreaInsets.bottom;
     
     // tableView的最大高度
     self.maxTableViewHeight = self.maxHeight - self.titleAndMessageView.h;
@@ -391,7 +397,10 @@
         [self.cancelButton setTitle:self.cancelTitle forState:UIControlStateNormal];
         self.customBgView.h += 70;
     }
-    
+
+
+    self.customBgView.h += safeAreaInsets.bottom;
+
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureAction:)];
     tapGesture.delegate = self;
     [self addGestureRecognizer:tapGesture];
